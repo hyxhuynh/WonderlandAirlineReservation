@@ -23,16 +23,28 @@ namespace WonderlandAirlineReservation {
 		Flight& addFlight(const std::string& originLocation,
 			const std::string& destinationLocation,
 			std::string departureDateTime,
-			std::string arrivalDateTime);
+			std::string arrivalDateTime,
+			int seatCapacity);
 		Flight& getFlight(int flightNumber);
+
+		void addReservation(Flight& flight);
+
+		void showReservedFlights();
 
 		void displayAll() const;
 
+		void displayPassenger() const;
+
 		bool isValidFlight(int flightNumber) const;
+
+		bool isFlightReserved(int flightNumber) const;
+
+		bool isValidPassenger(int passengerId) const;
 
 	private:
 		std::vector<Passenger> mPassengers;
 		std::vector<Flight> mFlights;
+		std::vector<int> mReservedFlights;
 		int mNextPassengerID = kFirstPassengerID;
 		int mNextFlightNumber = kFirstFlightNumber;
 	};

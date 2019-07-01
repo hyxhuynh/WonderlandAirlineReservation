@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "PassengerFlightInfo.h"
 
 namespace WonderlandAirlineReservation {
 
@@ -11,7 +12,9 @@ namespace WonderlandAirlineReservation {
 			const std::string& lastName, 
 			const std::string& contactInfo);
 
+
 		void display() const;
+		void verifyByID();
 
 		
 		void setFirstName(const std::string& firstName);
@@ -26,15 +29,18 @@ namespace WonderlandAirlineReservation {
 		void setPassengerID(int passengerID);
 		int getPassengerID() const;
 
-		void setSeatNumber(int seatNumber);
-		int getSeatNumber() const;
+		void addFlightInfo(int flightNumber, int seatNumber);
+		void displayFlightInfo() const;
+
+		bool isVerified() const;
 
 	private:
 		std::string mFirstName;
 		std::string mLastName;
 		std::string mContactInfo;
-		int mSeatNumber = -1;
+		std::vector<PassengerFlightInfo> mFlightInfos;
 		int mPassengerID = -1;
+		bool mVerified = false;
 
 	};
 }

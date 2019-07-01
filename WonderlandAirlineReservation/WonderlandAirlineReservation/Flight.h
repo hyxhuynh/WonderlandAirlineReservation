@@ -10,8 +10,8 @@ namespace WonderlandAirlineReservation {
 		Flight(const std::string& originLocation,
 			const std::string& destinationLocation,
 			std::string departureDateTime,
-			std::string arrivalDateTime
-			);
+			std::string arrivalDateTime,
+			int seatCapacity);
 
 		void display() const;
 
@@ -34,12 +34,22 @@ namespace WonderlandAirlineReservation {
 		void setSeatCapacity(int seatCapacity);
 		int getSeatCapacity() const;
 
+		bool isSeatAvailable(int seat) const;
+
+		void showAvailableSeats();
+
+		void reserveSeat(int seat);
+
+		std::string getAvailableSeats() const;
+
+		std::string getReservedSeats() const;
 
 	private:
 		std::string mOriginLocation;
 		std::string mDestinationLocation;
 		std::string mDepartureDateTime;
 		std::string mArrivalDateTime;
+		std::vector<int> mSeatsTaken;
 
 		int mSeatCapacity = 1;
 		int mFlightNumber = -1;

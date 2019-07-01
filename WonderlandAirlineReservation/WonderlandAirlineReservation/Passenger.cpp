@@ -53,24 +53,37 @@ namespace WonderlandAirlineReservation {
 		return mPassengerID;
 	}
 
-	// Seat Number
-	void Passenger::setSeatNumber(int seatNumber) {
-		mSeatNumber = seatNumber;
+
+	void Passenger::addFlightInfo(int flightNumber, int seatNumber) {
+		PassengerFlightInfo flightInfo = PassengerFlightInfo(flightNumber, seatNumber);
+		mFlightInfos.push_back(flightInfo);
 	}
 
-	int Passenger::getSeatNumber() const {
-		return mSeatNumber;
+	void Passenger::displayFlightInfo() const {
+		for (auto& flightInfo : mFlightInfos) {
+			flightInfo.display();
+		}
 	}
 
+	void Passenger::verifyByID()
+	{
+		mVerified = true;
+	}
+
+	bool Passenger::isVerified() const {
+		return mVerified;
+	}
 
 	// Display Passenger Information
 	void Passenger::display() const
 	{
+		cout << endl;
 		cout << "Passenger: " << getLastName() << ", " << getFirstName() << endl;
 		cout << "-------------------------" << endl;
 		cout << "Contact Information (Phone/ Email): " << getContactInfo() << endl;
 		cout << "Passenger ID: " << getPassengerID() << endl;
-		cout << "Seat Number" << getSeatNumber() << endl;
+		cout << "Flights: " << endl;
+		displayFlightInfo();
 		cout << endl;
 	}
 
